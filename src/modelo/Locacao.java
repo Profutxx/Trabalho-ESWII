@@ -8,10 +8,10 @@ public class Locacao {
     private long quilometragem;
     private double valorCalcao;
     private double valorLocacao;
-    private int devolvido;
+    private String devolvido;
 
 
-    public void registrarLocacao(String dataLocacao, String horaLocacao, String dataDevolucao, String horaDevolucao, long quilometragem, double valorCalcao, double valorLocacao, int devolvido) {
+    public void registrarLocacao(String dataLocacao, String horaLocacao, String dataDevolucao, String horaDevolucao, long quilometragem, double valorCalcao, double valorLocacao, String devolvido) {
         this.dataLocacao = dataLocacao;
         this.horaLocacao = horaLocacao;
         this.dataDevolucao = dataDevolucao;
@@ -20,5 +20,7 @@ public class Locacao {
         this.valorCalcao = valorCalcao;
         this.valorLocacao = valorLocacao;
         this.devolvido = devolvido;
+
+
     }
 }

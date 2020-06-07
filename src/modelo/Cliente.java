@@ -11,6 +11,9 @@ public class Cliente {
         this.nome = nome;
         this.endereco = endereco;
         this.tel = tel;
+
+        System.out.println(nome + cpf + tel + endereco);
+
     }
 
     public void removerCliente(String nome){
