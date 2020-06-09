@@ -9,6 +9,7 @@ public class Locacao {
     private double valorCalcao;
     private double valorLocacao;
     private String devolvido;
+    private String placa;
 
 
     public Locacao(){}
@@ -75,5 +76,13 @@ public class Locacao {
 
     public void setDevolvido(String devolvido) {
         this.devolvido = devolvido;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 }

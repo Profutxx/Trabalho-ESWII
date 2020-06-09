@@ -13,7 +13,7 @@ public class DAOLocacao {
             conexao.conectar();
 
             String sql =
-                    "INSERT INTO locacao (DATA_LOCACAO,HORA_LOCACAO,DATA_DEVOLUCAO,HORA_DEVOLUCAO,QUILOMETRAGEM,VALOR_CALCAO,VALOR_LOCACAO,DEVOLVIDO) VALUES("
+                    "INSERT INTO locacao (DATA_LOCACAO,HORA_LOCACAO,DATA_DEVOLUCAO,HORA_DEVOLUCAO,QUILOMETRAGEM,VALOR_CALCAO,VALOR_LOCACAO,DEVOLVIDO,PLACA) VALUES("
                             + "DATE_FORMAT(STR_TO_DATE('" + locacao.getDataLocacao() + "', '%d/%m/%Y'), '%Y-%m-%d'),"
                             + "'" + locacao.getHoraLocacao() + "',"
                             + "DATE_FORMAT(STR_TO_DATE('" + locacao.getDataDevolucao() + "', '%d/%m/%Y'), '%Y-%m-%d'),"
@@ -21,7 +21,8 @@ public class DAOLocacao {
                             + "'" + locacao.getQuilometragem() + "',"
                             + "'" + locacao.getValorCalcao() + "',"
                             + "'" + locacao.getValorLocacao() + "',"
-                            + "'" + locacao.getDevolvido() + "'"
+                            + "'" + locacao.getDevolvido() + "',"
+                            + "'" + locacao.getPlaca() + "'"
                             + ");";
 
             return conexao.insertSQL(sql);
