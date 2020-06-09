@@ -1,6 +1,7 @@
 package view;
 
-import controle.LocacaoController;
+import controller.LocacaoController;
+import model.Locacao;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,22 +35,23 @@ public class LocacaoView extends JFrame {
 
         setTitle("Cadastro de Usuário");
         setSize(400, 500);
-        LocacaoController controle = new LocacaoController();
 
 
         enviarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                dataLocacao = myDataLocacaoValue.getText();
-                horaLocacao = myHoraLocacaoValue.getText();
-                dataLocacao = myDataLocacaoValue.getText();
-                horaDevolucao = myHoraDevolucaoValue.getText();
-                quilometragem = Long.parseLong(myQuilometragemValue.getText());
-                valorCalcao = Double.parseDouble(myValorCalcaoValue.getText());
-                valorLocacao = Double.parseDouble(myValorLocacaoValue.getText());
-                devolvido = myDevolvidoValue.getText();
+                Locacao locacao = new Locacao();
+                locacao.setDataLocacao(myDataLocacaoValue.getText());
+                locacao.setHoraLocacao(myHoraLocacaoValue.getText());
+                locacao.setDataDevolucao(myDataDevolucaoValue.getText());
+                locacao.setHoraDevolucao(myHoraDevolucaoValue.getText());
+                locacao.setQuilometragem(Long.parseLong(myQuilometragemValue.getText()));
+                locacao.setValorCalcao(Double.parseDouble(myValorCalcaoValue.getText()));
+                locacao.setValorLocacao(Double.parseDouble(myValorLocacaoValue.getText()));
+                locacao.setDevolvido(myDevolvidoValue.getText());
 
-                controle.RegistrarLocacao(dataLocacao,horaLocacao,dataDevolucao,horaDevolucao,quilometragem,valorCalcao,valorLocacao,devolvido);
+                LocacaoController controle = new LocacaoController();
+                controle.RegistrarLocacao(locacao);
             }
         });
     }
@@ -125,4 +127,5 @@ public class LocacaoView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return LocacaoForm;
     }
+
 }

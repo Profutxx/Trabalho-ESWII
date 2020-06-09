@@ -1,12 +1,12 @@
 package view;
 
-import controle.AutomovelController;
+import controller.AutomovelController;
+import model.Automovel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import controle.AutomovelController;
 
 public class AutomovelView extends JFrame {
     private JTextField myPlacaValue;
@@ -34,22 +34,23 @@ public class AutomovelView extends JFrame {
 
         setTitle("Cadastro de Usuário");
         setSize(400, 500);
-        AutomovelController controle = new AutomovelController();
 
 
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                placa = myPlacaValue.getText();
-                cor = myCorValue.getText();
-                portas = Integer.parseInt(myPortasValue.getText());
-                combustivel = myCombustivelValue.getText();
-                quilometragem = myQuilometragemValue.getText();
-                renavam = myRenavamValue.getText();
-                chassi = myChassiValue.getText();
-                valorLocacao = Double.parseDouble(myValorValue.getText());
+                Automovel automovel = new Automovel();
+                automovel.setPlaca(myPlacaValue.getText());
+                automovel.setCor(myCorValue.getText());
+                automovel.setPortas(Integer.parseInt(myPortasValue.getText()));
+                automovel.setCombustivel(myCombustivelValue.getText());
+                automovel.setQuilometragem(Double.valueOf(myQuilometragemValue.getText()));
+                automovel.setRenavam(myRenavamValue.getText());
+                automovel.setChassi(myChassiValue.getText());
+                automovel.setValorLocacao(Double.parseDouble(myValorValue.getText()));
 
-                controle.CadastrarAutomovel(placa, cor, portas, combustivel, quilometragem, renavam, chassi, valorLocacao);
+                AutomovelController controle = new AutomovelController();
+                controle.CadastrarAutomovel(automovel);
 
             }
         });
@@ -106,7 +107,7 @@ public class AutomovelView extends JFrame {
         myValorValue = new JTextField();
         AutomovelForm.add(myValorValue, new com.intellij.uiDesigner.core.GridConstraints(16, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         cadastrarButton = new JButton();
-        cadastrarButton.setText("Cadastrar");
+        cadastrarButton.setText("Alugar");
         AutomovelForm.add(cadastrarButton, new com.intellij.uiDesigner.core.GridConstraints(17, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label8 = new JLabel();
         label8.setText("Tipo Combustível");
