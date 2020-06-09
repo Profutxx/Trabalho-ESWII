@@ -52,6 +52,10 @@ public class LocacaoView extends JFrame {
 
                 LocacaoController controle = new LocacaoController();
                 controle.RegistrarLocacao(locacao);
+
+                dispose();
+                JOptionPane.showMessageDialog(null, "Locação realizada com sucesso");
+
             }
         });
     }

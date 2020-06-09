@@ -19,10 +19,10 @@ public class ConexaoMySql {
     private Statement statement;
     private ResultSet resultSet;
 
-    private String servidor = "localhost:3306";
-    private String nomeDoBanco = "locacao";
-    private String usuario = "thiago";
-    private String senha = "mysenha1q2w3e4r";
+    private String servidor = AtributosBanco.getAtributos("myServerName");
+    private String nomeDoBanco = AtributosBanco.getAtributos("myDatabase");
+    private String usuario = AtributosBanco.getAtributos("myUser");
+    private String senha = AtributosBanco.getAtributos("mySenha");
 
     public ConexaoMySql(){}
 

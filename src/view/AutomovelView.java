@@ -52,6 +52,10 @@ public class AutomovelView extends JFrame {
                 AutomovelController controle = new AutomovelController();
                 controle.CadastrarAutomovel(automovel);
 
+                dispose();
+                JOptionPane.showMessageDialog(null, "Cadastro do Automóvel realizado com sucesso");
+
+
             }
         });
     }
