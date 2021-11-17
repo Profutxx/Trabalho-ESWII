@@ -40,7 +40,7 @@ public class DAOCliente {
 
     }
 
-    public boolean excluirCliente(Cliente cliente) {
+    public boolean excluirCliente(String cpf) {
 
         ConexaoMySql conexao = new ConexaoMySql();
 
@@ -49,7 +49,7 @@ public class DAOCliente {
 
             String sql =
                     "DELETE FROM CLIENTE WHERE cpf = "
-                            + "'" + cliente.getCpf() + "';";
+                            + "'" + cpf + "';";
 
             return conexao.executarUpdateDeleteSQL(sql);
 
@@ -78,5 +78,22 @@ public class DAOCliente {
             clientes.add(c);
         }
         return clientes;
+    }
+
+    public Cliente getByCpf(String cpf) throws  SQLException{
+        ConexaoMySql con = new ConexaoMySql();
+        Statement stat = con.conectar().createStatement();
+        ResultSet rs = stat.executeQuery("SELECT * FROM CLIENTE WHERE CPF = '"+cpf+"'");
+        stat.close();
+
+        if(rs.next()){
+            Cliente c = new Cliente();
+            c.setNome(rs.getString("nome"));
+            c.setTel(rs.getString("telefone"));
+            c.setEndereco(rs.getString("endereco"));
+            c.setCpf(rs.getString("cpf"));
+            return c;
+        }
+        return null;
     }
 }
