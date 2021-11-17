@@ -15,11 +15,6 @@ public class ClienteView extends JFrame {
     private JButton cadastrarButton;
     private JPanel UserForm;
 
-    private String nome;
-    private String cpf;
-    private String telefone;
-    private String endereco;
-
 
     public ClienteView() {
         add(UserForm);

@@ -4,16 +4,15 @@ import conexoes.ConexaoMySql;
 import model.Cliente;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DAOCliente {
+
+//    private Connection con;
 
     public int salvarCliente(Cliente cliente) {
 
@@ -63,37 +62,21 @@ public class DAOCliente {
 
     }
 
-    public List<Cliente> listar(){
+    public List<Cliente> listar() throws SQLException {
 
-        List<Cliente> clientes = new ArrayList<>();
-        ConexaoMySql conexao = new ConexaoMySql();
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        ConexaoMySql con = new ConexaoMySql();
+        Statement stat = con.conectar().createStatement();
+        ResultSet rs = stat.executeQuery("select * from cliente");
 
-        try{
-            String sql = "SELECT * FROM CLIENTE;";
-            pstm = conexao.conectar().prepareStatement(sql);
-            rs = pstm.executeQuery();
-
-            while(rs.next()){
-
-                Cliente cliente = new Cliente();
-
-                cliente.setCpf(rs.getString("cpf"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setTel(rs.getString("telefone"));
-                cliente.setEndereco(rs.getString("endereco"));
-
-                clientes.add(cliente);
-            }
-
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Erro ao listar clientes"+e,"erro",JOptionPane.ERROR_MESSAGE);
-        }finally {
-            conexao.fecharConexao();
+        while(rs.next()){
+            Cliente c = new Cliente();
+            c.setCpf(rs.getString("cpf"));
+            c.setNome(rs.getString("nome"));
+            c.setTel(rs.getString("telefone"));
+            c.setEndereco(rs.getString("endereco"));
+            clientes.add(c);
         }
-
         return clientes;
     }
 }

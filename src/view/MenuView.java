@@ -7,20 +7,26 @@ import java.awt.event.ActionListener;
 
 public class MenuView extends JFrame {
     private JButton cadastrarClienteButton;
-    private JButton cadastrarVeiculoButton;
-    private JButton AlugarButton;
+    private JButton pesquisarClienteButton;
+    private JButton listarClienteButton;
     private JPanel MenuForm;
 
 
     public MenuView() {
         add(MenuForm);
 
-        setTitle("Sistema de Locação de Veículo");
+        setTitle("Sistema de Loja");
         setSize(400, 500);
         cadastrarClienteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new ClienteView().setVisible(true);
+            }
+        });
+        listarClienteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new ClienteListView().setVisible(true);
             }
         });
     }
@@ -49,12 +55,12 @@ public class MenuView extends JFrame {
         cadastrarClienteButton = new JButton();
         cadastrarClienteButton.setText("Cadastrar Cliente");
         MenuForm.add(cadastrarClienteButton, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        cadastrarVeiculoButton = new JButton();
-        cadastrarVeiculoButton.setText("Pesquisar Cliente");
-        MenuForm.add(cadastrarVeiculoButton, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        AlugarButton = new JButton();
-        AlugarButton.setText("Listar Clientes");
-        MenuForm.add(AlugarButton, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pesquisarClienteButton = new JButton();
+        pesquisarClienteButton.setText("Pesquisar Cliente");
+        MenuForm.add(pesquisarClienteButton, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        listarClienteButton = new JButton();
+        listarClienteButton.setText("Listar Clientes");
+        MenuForm.add(listarClienteButton, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**

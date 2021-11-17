@@ -24,7 +24,7 @@
           <text value="Cadastrar Cliente"/>
         </properties>
       </component>
-      <component id="ee35a" class="javax.swing.JButton" binding="cadastrarVeiculoButton">
+      <component id="ee35a" class="javax.swing.JButton" binding="pesquisarClienteButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -32,7 +32,7 @@
           <text value="Pesquisar Cliente"/>
         </properties>
       </component>
-      <component id="2fb15" class="javax.swing.JButton" binding="AlugarButton">
+      <component id="2fb15" class="javax.swing.JButton" binding="listarClienteButton">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
