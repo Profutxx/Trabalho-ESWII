@@ -1,4 +1,4 @@
-package view;
+package view.Cliente;
 
 import controller.ClienteController;
 import model.Cliente;

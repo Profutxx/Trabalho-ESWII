@@ -1,4 +1,4 @@
-package view;
+package view.Cliente;
 
 import DAO.DAOCliente;
 import model.Cliente;

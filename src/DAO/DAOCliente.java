@@ -84,7 +84,6 @@ public class DAOCliente {
         ConexaoMySql con = new ConexaoMySql();
         Statement stat = con.conectar().createStatement();
         ResultSet rs = stat.executeQuery("SELECT * FROM CLIENTE WHERE CPF = '"+cpf+"'");
-        stat.close();
 
         if(rs.next()){
             Cliente c = new Cliente();

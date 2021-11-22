@@ -1,4 +1,4 @@
-package view;
+package view.Cliente;
 
 import javax.swing.*;
 import java.awt.*;

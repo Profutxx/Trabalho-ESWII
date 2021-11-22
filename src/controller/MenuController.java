@@ -1,12 +1,9 @@
 package controller;
 
-import DAO.DAOCliente;
-import model.Cliente;
-import view.ClienteView;
+import view.Cliente.ClienteView;
 import view.MenuView;
 
 import java.sql.SQLException;
-import java.util.List;
 
 public class MenuController {
     public static void main(String[] args) throws SQLException {

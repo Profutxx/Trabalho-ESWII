@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.MenuView">
-  <grid id="27dc6" binding="MenuForm" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.Cliente.MenuViewCliente">
+  <grid id="27dc6" binding="MenuForm" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -8,44 +8,36 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="6dad5" class="javax.swing.JLabel">
+      <component id="324aa" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Loja"/>
-        </properties>
-      </component>
-      <component id="30295" class="javax.swing.JButton" binding="manterClienteButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Manter Cliente"/>
         </properties>
       </component>
-      <component id="634e3" class="javax.swing.JButton" binding="manterFuncionárioButton" default-binding="true">
+      <component id="711f8" class="javax.swing.JButton" binding="cadastrarClienteButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cadastrar Cliente"/>
+        </properties>
+      </component>
+      <component id="ee35a" class="javax.swing.JButton" binding="pesquisarClienteButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Manter Funcionário"/>
+          <text value="Pesquisar Cliente"/>
         </properties>
       </component>
-      <component id="9b550" class="javax.swing.JButton" binding="manterProdutoButton" default-binding="true">
+      <component id="2fb15" class="javax.swing.JButton" binding="listarClienteButton">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Manter Produto"/>
-        </properties>
-      </component>
-      <component id="db381" class="javax.swing.JButton" binding="realizarCompraButton" default-binding="true">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Realizar Compra"/>
+          <text value="Listar Clientes"/>
         </properties>
       </component>
     </children>
