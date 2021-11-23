@@ -29,24 +29,28 @@ public class MenuView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MenuViewCliente().setVisible(true);
+                dispose();
             }
         });
         manterFuncionárioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MenuViewFuncionario().setVisible(true);
+                dispose();
             }
         });
         manterProdutoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MenuViewProduto().setVisible(true);
+                dispose();
             }
         });
         realizarCompraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new CompraView().setVisible(true);
+                dispose();
             }
         });
     }

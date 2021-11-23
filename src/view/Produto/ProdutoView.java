@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Produto;
+import controller.ProdutoController;
 
 public class ProdutoView extends JFrame {
     private JTextField myDescricaoValue;
@@ -24,6 +26,19 @@ public class ProdutoView extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Produto produto = new Produto();
+                produto.setCodigo(Integer.parseInt(myCodigoValue.getText()));
+                produto.setDescricao(myDescricaoValue.getText());
+                produto.setValidade(myValidadeValue.getText());
+                produto.setEstoqueMin(Integer.parseInt(myEstoqueMinValue.getText()));
+                produto.setQntEstoque(Integer.parseInt(myQntEstoqueValue.getText()));
+                produto.setValor(Float.parseFloat(myValorValue.getText()));
+
+                ProdutoController controle = new ProdutoController();
+                controle.salvarProduto(produto);
+
+                dispose();
+                JOptionPane.showMessageDialog(null, "Cadastro do produto realizado com sucesso");
 
             }
         });

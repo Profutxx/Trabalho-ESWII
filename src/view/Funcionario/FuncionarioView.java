@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import controller.FuncionarioController;
+import model.Funcionario;
 
 public class FuncionarioView extends JFrame {
     private JTextField myNameValue;
@@ -24,6 +26,19 @@ public class FuncionarioView extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Funcionario funcionario = new Funcionario();
+                funcionario.setMatricula(myMatriculaValue.getText());
+                funcionario.setSalarioBase(Float.parseFloat(mySalarioBase.getText()));
+                funcionario.setNome(myNameValue.getText());
+                funcionario.setEndereco(myEnderecoValue.getText());
+                funcionario.setTelefone(myTelefoneValue.getText());
+                funcionario.setCpf(myCpfValue.getText());
+
+                FuncionarioController controle = new FuncionarioController();
+                controle.salvarFuncionario(funcionario);
+
+                dispose();
+                JOptionPane.showMessageDialog(null, "Cadastro do funcionário realizado com sucesso");
 
             }
         });
