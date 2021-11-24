@@ -3,10 +3,18 @@ package model;
 public class Produto {
 
     private String descricao,validade;
-    private int codigo,qntEstoque,estoqueMin;
+    private int codigo,qntEstoque,estoqueMin,idProduto;
     private float valor;
 
     public Produto() {}
+
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
 
     public String getDescricao() {
         return descricao;

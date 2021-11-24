@@ -38,4 +38,23 @@ public class DAOProduto {
         }
 
     }
+
+    public List<Produto> listar() throws SQLException{
+
+        List<Produto> produtos = new ArrayList<>();
+        ConexaoMySql con = new ConexaoMySql();
+        Statement stat = con.conectar().createStatement();
+        ResultSet rs = stat.executeQuery("select * from produto");
+
+        while(rs.next()){
+            Produto p = new Produto();
+            p.setIdProduto(rs.getInt("idProduto"));
+            p.setValor(rs.getInt("valor"));
+            p.setDescricao(rs.getString("descricao"));
+            p.setCodigo(rs.getInt("codigo"));
+            produtos.add(p);
+        }
+        return produtos;
+    }
+
 }
