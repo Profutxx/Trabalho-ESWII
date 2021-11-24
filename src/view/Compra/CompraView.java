@@ -1,13 +1,22 @@
 package view.Compra;
 
+import controller.ClienteController;
+import controller.FuncionarioController;
+import model.Cliente;
+import model.Funcionario;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 public class CompraView extends JFrame {
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
+    private JComboBox comboBoxCliente;
+    private JComboBox comboBoxFuncionario;
+    private JComboBox comboBoxPagamento;
     private JButton realizarCompraButton;
     private JPanel MenuForm;
 
@@ -16,6 +25,38 @@ public class CompraView extends JFrame {
 
         setTitle("Sistema de Loja");
         setSize(400, 500);
+
+        //Listando Clientes
+        ClienteController controleCliente = new ClienteController();
+        try {
+            List<Cliente> listClientes = controleCliente.listarCliente();
+            String[] listaClientes = new String[listClientes.size()];
+            int i = 0;
+
+            for (Cliente c : listClientes) {
+                comboBoxCliente.addItem(c.getNome());
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        //Listando Funcionários
+        FuncionarioController controleFuncionario = new FuncionarioController();
+
+        try {
+            List<Funcionario> listFuncionarios = controleFuncionario.listarFuncionarios();
+            String[] listaFuncionarios = new String[listFuncionarios.size()];
+            int i = 0;
+
+            for (Funcionario f : listFuncionarios) {
+                comboBoxFuncionario.addItem(f.getNome());
+                i++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         realizarCompraButton.addActionListener(new ActionListener() {
             @Override
@@ -48,25 +89,27 @@ public class CompraView extends JFrame {
         final JLabel label2 = new JLabel();
         label2.setText("Cliente");
         MenuForm.add(label2, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        comboBox1 = new JComboBox();
-        MenuForm.add(comboBox1, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        comboBoxCliente = new JComboBox();
+        MenuForm.add(comboBoxCliente, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label3 = new JLabel();
         label3.setText("Funcionario");
         MenuForm.add(label3, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final JComboBox comboBox3 = new JComboBox();
-        MenuForm.add(comboBox3, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        comboBoxFuncionario = new JComboBox();
+        final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
+        comboBoxFuncionario.setModel(defaultComboBoxModel1);
+        MenuForm.add(comboBoxFuncionario, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label4 = new JLabel();
         label4.setText("Produtos");
         MenuForm.add(label4, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label5 = new JLabel();
         label5.setText("Forma de Pagamento");
         MenuForm.add(label5, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        comboBox2 = new JComboBox();
-        final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
-        defaultComboBoxModel1.addElement("Dinheiro");
-        defaultComboBoxModel1.addElement("Cartão de Crédito");
-        comboBox2.setModel(defaultComboBoxModel1);
-        MenuForm.add(comboBox2, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        comboBoxPagamento = new JComboBox();
+        final DefaultComboBoxModel defaultComboBoxModel2 = new DefaultComboBoxModel();
+        defaultComboBoxModel2.addElement("Dinheiro");
+        defaultComboBoxModel2.addElement("Cartão de Crédito");
+        comboBoxPagamento.setModel(defaultComboBoxModel2);
+        MenuForm.add(comboBoxPagamento, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         realizarCompraButton = new JButton();
         realizarCompraButton.setText("Realizar Compra");
         MenuForm.add(realizarCompraButton, new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -78,4 +121,5 @@ public class CompraView extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return MenuForm;
     }
+
 }

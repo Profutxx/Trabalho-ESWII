@@ -1,7 +1,6 @@
 package DAO;
 
 import conexoes.ConexaoMySql;
-import model.Cliente;
 import model.Funcionario;
 
 import javax.swing.*;
@@ -39,5 +38,21 @@ public class DAOFuncionario {
             conexao.fecharConexao();
         }
 
+    }
+
+    public List<Funcionario> listar() throws SQLException {
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        ConexaoMySql con = new ConexaoMySql();
+        Statement stat = con.conectar().createStatement();
+        ResultSet rs = stat.executeQuery("select * from funcionario");
+
+        while(rs.next()){
+            Funcionario f = new Funcionario();
+            f.setCpf(rs.getString("cpf"));
+            f.setNome(rs.getString("nome"));
+            funcionarios.add(f);
+        }
+        return funcionarios;
     }
 }
