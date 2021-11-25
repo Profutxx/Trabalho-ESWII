@@ -27,7 +27,7 @@ public class CompraView extends JFrame {
     private JTextField subTotalProdutosField;
     private JTextField descontoField;
     private JTextField totalProdutosField;
-    private JSpinner spinner1;
+    private JSpinner parcelasField;
     private JSpinner qntProduto;
     float totalProdutosFloat = 0;
 
@@ -38,6 +38,11 @@ public class CompraView extends JFrame {
 
         setTitle("Sistema de Loja");
         setSize(600, 700);
+
+        parcelasField.setValue(1);
+        parcelasField.setEnabled(false);
+        SpinnerModel modeloSpinner = new SpinnerNumberModel(1,1,3,1);
+        parcelasField.setModel(modeloSpinner);
 
 
         DefaultListModel modelo_da_lista = new DefaultListModel();
@@ -94,7 +99,7 @@ public class CompraView extends JFrame {
         realizarCompraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
         adicionarButton.addActionListener(new ActionListener() {
@@ -122,8 +127,13 @@ public class CompraView extends JFrame {
                                 desconto = totalProdutosFloat/100*3;
                             }
 
+
                             descontoField.setText(String.valueOf(desconto));
                             totalProdutosField.setText(String.valueOf(totalProdutosFloat-desconto));
+
+                            if(totalProdutosFloat-desconto > 500){
+                                parcelasField.setEnabled(true);
+                            }
                         }
                         i++;
                     }
@@ -132,6 +142,8 @@ public class CompraView extends JFrame {
                 }
             }
         });
+
+
     }
 
     {
