@@ -79,6 +79,30 @@ public class DAOCliente {
         }
         return clientes;
     }
+    //altera o nome, endereco e telefone do cliente na base de dados com base no cpf
+    public boolean alterarCliente(String cpf, String nome, String endereco, String telefone) {
+
+        ConexaoMySql conexao = new ConexaoMySql();
+
+        try {
+            conexao.conectar();
+
+            String sql =
+                    "UPDATE CLIENTE SET nome = '" + nome +
+                            "', endereco = '" + endereco +
+                            "', telefone ='" + telefone +
+                            "' WHERE cpf = '"+ cpf + "';";
+
+            return conexao.executarUpdateDeleteSQL(sql);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            conexao.fecharConexao();
+        }
+
+    }
 
     public Cliente getByCpf(String cpf) throws  SQLException{
         ConexaoMySql con = new ConexaoMySql();

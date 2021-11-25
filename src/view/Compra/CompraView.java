@@ -24,7 +24,10 @@ public class CompraView extends JFrame {
     private JList listaDeProdutos;
     private JButton adicionarButton;
     private JTextField quantidadeTextField;
+    private JTextField totalProdutos;
     private JSpinner qntProduto;
+    float totalProdutosFloat = 0;
+
 
 
     public CompraView() {
@@ -32,6 +35,7 @@ public class CompraView extends JFrame {
 
         setTitle("Sistema de Loja");
         setSize(600, 700);
+
 
         DefaultListModel modelo_da_lista = new DefaultListModel();
 
@@ -100,10 +104,13 @@ public class CompraView extends JFrame {
                     String[] listaProdutos = new String[listProdutos.size()];
                     int i = 0;
 
+
                     for (Produto p : listProdutos) {
                         if (index == i) {
                             modelo_da_lista.addElement(quantidadeTextField.getText() + "x " + p.getDescricao() + " Valor Unidade: " + p.getValor() + " Total: " + String.valueOf(Integer.parseInt(quantidadeTextField.getText()) * p.getValor()));
                             listaDeProdutos.setModel(modelo_da_lista);
+                            totalProdutosFloat += (Integer.parseInt(quantidadeTextField.getText()) * p.getValor());
+                            totalProdutos.setText(String.valueOf(totalProdutosFloat));
                         }
                         i++;
                     }

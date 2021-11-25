@@ -41,11 +41,25 @@ public class ClienteBuscarView extends JFrame {
 
             }
         });
+
+        //Salva alterações realizadas no cliente selecionado
+        salvarAlteraçõesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClienteController controle = new ClienteController();
+                controle.alterarCliente(CPFTextField.getText(), nomeCampo.getText(), enderecoCampo.getText(), telefoneCampo.getText());
+            }
+        });
+
+        //Deleta o cliente selecionado
         deletarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ClienteController controle = new ClienteController();
                 controle.excluirCliente(CPFTextField.getText());
+                nomeCampo.setText("");
+                enderecoCampo.setText("");
+                telefoneCampo.setText("");
             }
         });
     }
