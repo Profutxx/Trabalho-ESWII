@@ -24,7 +24,10 @@ public class CompraView extends JFrame {
     private JList listaDeProdutos;
     private JButton adicionarButton;
     private JTextField quantidadeTextField;
-    private JTextField totalProdutos;
+    private JTextField subTotalProdutosField;
+    private JTextField descontoField;
+    private JTextField totalProdutosField;
+    private JSpinner spinner1;
     private JSpinner qntProduto;
     float totalProdutosFloat = 0;
 
@@ -91,7 +94,7 @@ public class CompraView extends JFrame {
         realizarCompraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                
             }
         });
         adicionarButton.addActionListener(new ActionListener() {
@@ -110,7 +113,17 @@ public class CompraView extends JFrame {
                             modelo_da_lista.addElement(quantidadeTextField.getText() + "x " + p.getDescricao() + " Valor Unidade: " + p.getValor() + " Total: " + String.valueOf(Integer.parseInt(quantidadeTextField.getText()) * p.getValor()));
                             listaDeProdutos.setModel(modelo_da_lista);
                             totalProdutosFloat += (Integer.parseInt(quantidadeTextField.getText()) * p.getValor());
-                            totalProdutos.setText(String.valueOf(totalProdutosFloat));
+                            subTotalProdutosField.setText(String.valueOf(totalProdutosFloat));
+                            float desconto;
+                            if(totalProdutosFloat > 1000){
+                                desconto = totalProdutosFloat/100*5;
+                            }
+                            else{
+                                desconto = totalProdutosFloat/100*3;
+                            }
+
+                            descontoField.setText(String.valueOf(desconto));
+                            totalProdutosField.setText(String.valueOf(totalProdutosFloat-desconto));
                         }
                         i++;
                     }
