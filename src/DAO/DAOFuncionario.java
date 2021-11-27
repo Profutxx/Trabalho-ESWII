@@ -49,6 +49,7 @@ public class DAOFuncionario {
 
         while(rs.next()){
             Funcionario f = new Funcionario();
+            f.setIdFuncionario(rs.getInt("idFuncionario"));
             f.setCpf(rs.getString("cpf"));
             f.setNome(rs.getString("nome"));
             funcionarios.add(f);

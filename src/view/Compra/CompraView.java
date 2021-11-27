@@ -1,11 +1,10 @@
 package view.Compra;
 
 import controller.ClienteController;
+import controller.CompraController;
 import controller.FuncionarioController;
 import controller.ProdutoController;
-import model.Cliente;
-import model.Funcionario;
-import model.Produto;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,6 +37,8 @@ public class CompraView extends JFrame {
 
         setTitle("Sistema de Loja");
         setSize(600, 700);
+
+        Compra compra = new Compra();
 
         parcelasField.setValue(1);
         parcelasField.setEnabled(false);
@@ -99,9 +100,69 @@ public class CompraView extends JFrame {
         realizarCompraButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Cliente cliente = new Cliente();
+                Funcionario funcionario = new Funcionario();
+
+                // Cliente
+                try {
+                    List<Cliente> listClientes = controleCliente.listarCliente();
+                    String[] listaClientes = new String[listClientes.size()];
+                    int i = 0;
+                    int index = comboBoxCliente.getSelectedIndex();
+
+
+                    for (Cliente c : listClientes) {
+                        if (index == i){
+                            compra.setCliente(c);
+                        }
+                        i++;
+                    }
+                } catch (SQLException c) {
+                    c.printStackTrace();
+                }
+
+                // Funcionário
+                try {
+                    List<Funcionario> listFuncionarios = controleFuncionario.listarFuncionarios();
+                    String[] listaFuncionarios = new String[listFuncionarios.size()];
+                    int i = 0;
+                    int index = comboBoxFuncionario.getSelectedIndex();
+
+
+                    for (Funcionario f : listFuncionarios) {
+                        if (index == i){
+                            compra.setFuncionario(f);
+                        }
+                        i++;
+                    }
+                } catch (SQLException c) {
+                    c.printStackTrace();
+                }
+
+                //Forma de Pagamento
+
+                compra.setFormaPagamento(comboBoxPagamento.getSelectedItem()+"");
+
+                //Parcelas
+
+                compra.setParcelas((Integer) parcelasField.getValue());
+
+                // Compra Valor
+
+                compra.setValorCompra(Float.parseFloat(totalProdutosField.getText()));
+
+                // Enviar Controller
+                CompraController controle = new CompraController();
+                controle.SalvarCompra(compra);
+                dispose();
 
             }
+
+
         });
+
+
+
         adicionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,6 +181,9 @@ public class CompraView extends JFrame {
                             totalProdutosFloat += (Integer.parseInt(quantidadeTextField.getText()) * p.getValor());
                             subTotalProdutosField.setText(String.valueOf(totalProdutosFloat));
                             float desconto;
+                            CompraProduto compraProduto = (new CompraProduto(p,Integer.parseInt(quantidadeTextField.getText())));
+                            compra.addProduto(compraProduto);
+
                             if(totalProdutosFloat > 1000){
                                 desconto = totalProdutosFloat/100*5;
                             }
@@ -131,9 +195,10 @@ public class CompraView extends JFrame {
                             descontoField.setText(String.valueOf(desconto));
                             totalProdutosField.setText(String.valueOf(totalProdutosFloat-desconto));
 
-                            if(totalProdutosFloat-desconto > 500){
+                            if(totalProdutosFloat-desconto > 500 && comboBoxPagamento.getSelectedIndex() == 1){
                                 parcelasField.setEnabled(true);
                             }
+
                         }
                         i++;
                     }
@@ -144,6 +209,18 @@ public class CompraView extends JFrame {
         });
 
 
+        comboBoxPagamento.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(comboBoxPagamento.getSelectedIndex() == 0){
+                    parcelasField.setEnabled(false);
+                    parcelasField.setValue(1);
+                }
+                else if(Float.parseFloat(totalProdutosField.getText()) > 500){
+                    parcelasField.setEnabled(true);
+                }
+            }
+        });
     }
 
     {

@@ -6,8 +6,17 @@ public class Cliente {
     private String nome;
     private String endereco;
     private String tel;
+    private int idCliente;
 
     public Cliente() { }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
 
     public String getCpf() {
         return cpf;

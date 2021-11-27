@@ -4,8 +4,17 @@ public class Funcionario {
 
     private String matricula,nome,cpf,endereco,telefone;
     private float salarioBase;
+    private int idFuncionario;
 
     public Funcionario(){}
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 
     public String getMatricula() {
         return matricula;

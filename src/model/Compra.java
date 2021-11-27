@@ -1,11 +1,46 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Compra {
-    int idCompra,idCliente,idFuncionario,parcelas;
+
+    Cliente cliente;
+    Funcionario funcionario;
+    int idCompra,parcelas;
     float valorCompra;
     String formaPagamento,dataCompra;
+    List<CompraProduto> compraProduto = new ArrayList<>();
 
     public Compra(){};
+
+    public List<CompraProduto> getCompraProduto() {
+        return compraProduto;
+    }
+
+    public void setCompraProduto(List<CompraProduto> compraProduto) {
+        this.compraProduto = compraProduto;
+    }
+
+    public void addProduto(CompraProduto produto){
+        this.compraProduto.add(produto);
+    }
+
+    public model.Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(model.Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public model.Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(model.Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
 
     public int getIdCompra() {
         return idCompra;
@@ -13,22 +48,6 @@ public class Compra {
 
     public void setIdCompra(int idCompra) {
         this.idCompra = idCompra;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
     }
 
     public int getParcelas() {

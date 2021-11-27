@@ -71,6 +71,7 @@ public class DAOCliente {
 
         while(rs.next()){
             Cliente c = new Cliente();
+            c.setIdCliente(rs.getInt("idCliente"));
             c.setCpf(rs.getString("cpf"));
             c.setNome(rs.getString("nome"));
             c.setTel(rs.getString("telefone"));
@@ -111,6 +112,7 @@ public class DAOCliente {
 
         if(rs.next()){
             Cliente c = new Cliente();
+            c.setIdCliente(rs.getInt("idCliente"));
             c.setNome(rs.getString("nome"));
             c.setTel(rs.getString("telefone"));
             c.setEndereco(rs.getString("endereco"));

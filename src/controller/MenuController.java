@@ -11,7 +11,6 @@ public class MenuController {
         ClienteView myClienteForm = new ClienteView();
         myMenuForm.setVisible(true);
 
-
     }
 
 }
