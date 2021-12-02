@@ -2,10 +2,11 @@ package view;
 
 import view.Cliente.MenuViewCliente;
 import view.Compra.CompraView;
-import view.Funcionario.FuncionarioView;
 import view.Funcionario.MenuViewFuncionario;
 import view.Produto.MenuViewProduto;
-import view.Produto.ProdutoView;
+import view.Relatorios.ClientesRealizaramCompraView;
+import view.Relatorios.ComprasRealizadasPeriodoView;
+import view.Relatorios.ProdutosAbaixoEstoqueMinView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +19,9 @@ public class MenuView extends JFrame {
     private JButton manterFuncionárioButton;
     private JButton manterProdutoButton;
     private JButton realizarCompraButton;
+    private JButton clientesQueRealizaramCompraButton;
+    private JButton comprasRealizadasPeriodoButton;
+    private JButton produtosAbaixoEstoqueButton;
 
     public MenuView() {
         add(MenuForm);
@@ -47,6 +51,24 @@ public class MenuView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new CompraView().setVisible(true);
+            }
+        });
+        clientesQueRealizaramCompraButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ClientesRealizaramCompraView().setVisible(true);
+            }
+        });
+        comprasRealizadasPeriodoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ComprasRealizadasPeriodoView().setVisible(true);
+            }
+        });
+        produtosAbaixoEstoqueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ProdutosAbaixoEstoqueMinView().setVisible(true);
             }
         });
     }
