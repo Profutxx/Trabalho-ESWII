@@ -6,7 +6,7 @@ import model.CompraProduto;
 
 public class DAOCompraProduto {
 
-    public int SalvarCompraProduto(CompraProduto compraProduto) {
+    public int salvarCompraProduto(CompraProduto compraProduto) {
 
         ConexaoMySql conexao = new ConexaoMySql();
 
@@ -25,6 +25,25 @@ public class DAOCompraProduto {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        } finally {
+            conexao.fecharConexao();
+        }
+    }
+
+    public boolean removerQuantidadeProduto(CompraProduto compraProduto){
+        ConexaoMySql conexao = new ConexaoMySql();
+
+        try {
+            conexao.conectar();
+
+            String sql = "UPDATE PRODUTO SET qntEstoque = qntEstoque - " + compraProduto.getQntProduto()
+                    + " WHERE idProduto = " + compraProduto.getProduto().getIdProduto();
+
+            return conexao.executarUpdateDeleteSQL(sql);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         } finally {
             conexao.fecharConexao();
         }

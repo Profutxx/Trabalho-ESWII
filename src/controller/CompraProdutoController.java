@@ -3,11 +3,13 @@ package controller;
 import model.CompraProduto;
 import DAO.DAOCompraProduto;
 
-import java.sql.SQLException;
-
 public class CompraProdutoController {
 
-    public int SalvarCompraProduto(CompraProduto compraProduto){
-        return new DAOCompraProduto().SalvarCompraProduto(compraProduto);
+    public int salvarCompraProduto(CompraProduto compraProduto){
+        return new DAOCompraProduto().salvarCompraProduto(compraProduto);
+    }
+
+    public boolean removerQuantidadeProduto(CompraProduto compraProduto){
+        return new DAOCompraProduto().removerQuantidadeProduto(compraProduto);
     }
 }
