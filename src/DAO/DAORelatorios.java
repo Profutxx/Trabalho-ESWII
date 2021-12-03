@@ -64,4 +64,30 @@ public class DAORelatorios {
         }
         return produtos;
     }
+
+    public List<String> folhaDePagamento() throws SQLException{
+        List<String > folha = new ArrayList<>();
+        ConexaoMySql con = new ConexaoMySql();
+        Statement stat = con.conectar().createStatement();
+        String sql = "SELECT FUNCIONARIO.IDFUNCIONARIO,FUNCIONARIO.NOME,SUM(VALORCOMPRA)\n" +
+                "FROM COMPRA\n" +
+                "INNER JOIN FUNCIONARIO ON (FUNCIONARIO.IDFUNCIONARIO = COMPRA.IDFUNCIONARIO)\n" +
+                "GROUP BY FUNCIONARIO.NOME,FUNCIONARIO.IDFUNCIONARIO;";
+        ResultSet rs = stat.executeQuery(sql);
+
+        while(rs.next()){
+            float salario = 0,totalCompras = rs.getInt("valorCompra");
+
+            if(totalCompras < 10000){
+                salario *= 0.05;
+            }
+            else{
+                salario *= 0.07;
+            }
+
+            folha.add("Funcionario: "+rs.getString("nome")+" Total de Vendas: "+rs.getInt("valorCompra")+"Salario: "+ salario);
+
+        }
+        return folha;
+    }
 }
