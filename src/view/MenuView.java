@@ -6,6 +6,7 @@ import view.Funcionario.MenuViewFuncionario;
 import view.Produto.MenuViewProduto;
 import view.Relatorios.ClientesRealizaramCompraView;
 import view.Relatorios.ComprasRealizadasPeriodoView;
+import view.Relatorios.FolhaDePagamento;
 import view.Relatorios.ProdutosAbaixoEstoqueMinView;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class MenuView extends JFrame {
     private JButton clientesQueRealizaramCompraButton;
     private JButton comprasRealizadasPeriodoButton;
     private JButton produtosAbaixoEstoqueButton;
+    private JButton folhaDePagamentoButton;
 
     public MenuView() {
         add(MenuForm);
@@ -69,6 +71,12 @@ public class MenuView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ProdutosAbaixoEstoqueMinView().setVisible(true);
+            }
+        });
+        folhaDePagamentoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new FolhaDePagamento().setVisible(true);
             }
         });
     }

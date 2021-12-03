@@ -22,7 +22,7 @@ public class ComprasRealizadasPeriodoView extends JFrame {
         add(MenuForm);
 
         setTitle("Sistema de Loja");
-        setSize(600, 700);
+        setSize(800, 700);
 
         buscarButton.addActionListener(new ActionListener() {
             @Override
@@ -40,7 +40,7 @@ public class ComprasRealizadasPeriodoView extends JFrame {
                         listaCompras[i] = s;
                         i++;
                     }
-                    textArea1.setText(Arrays.toString(listaCompras).replace("[", "").replace(",", ""));
+                    textArea1.setText(Arrays.toString(listaCompras).replace("[", "").replace(",", "").replace("]",""));
                 } catch (SQLException g) {
                     g.printStackTrace();
                 }

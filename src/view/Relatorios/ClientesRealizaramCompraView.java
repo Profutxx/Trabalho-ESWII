@@ -36,7 +36,7 @@ public class ClientesRealizaramCompraView extends JFrame {
                         listaClientes[i] = "\n- Cliente " + (i + 1) + "\n" + "Nome:" + c.getNome() + " CPF:" + c.getCpf() + " Telefone:" + c.getTel() + " Endereço: " + c.getEndereco();
                         i++;
                     }
-                    listClientesArea.setText(Arrays.toString(listaClientes).replace("[", "").replace(",", ""));
+                    listClientesArea.setText(Arrays.toString(listaClientes).replace("[", "").replace(",", "").replace("]",""));
                 } catch (SQLException f) {
                     f.printStackTrace();
                 }

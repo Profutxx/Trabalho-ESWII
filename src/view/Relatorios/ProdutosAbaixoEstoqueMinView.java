@@ -35,10 +35,10 @@ public class ProdutosAbaixoEstoqueMinView extends JFrame{
                     int i = 0;
 
                     for (Produto c : listProdutos) {
-                        listaProdutos[i] = "Descrição:" + c.getDescricao() + " Quantidade em Estoque:" + c.getQntEstoque() + " Quantidade Minima:" + c.getEstoqueMin();
+                        listaProdutos[i] = "Descrição:" + c.getDescricao() + " Quantidade em Estoque:" + c.getQntEstoque() + " Quantidade Minima:" + c.getEstoqueMin() + "\n\n";
                         i++;
                     }
-                    textArea1.setText(Arrays.toString(listaProdutos).replace("[", "").replace(",", ""));
+                    textArea1.setText(Arrays.toString(listaProdutos).replace("[", "").replace(",", "").replace("]",""));
                 } catch (SQLException g) {
                     g.printStackTrace();
                 }

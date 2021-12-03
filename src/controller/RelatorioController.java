@@ -27,4 +27,10 @@ public class RelatorioController {
         List<Produto> produtos = dao.produtosAbaixoEstoqueMin();
         return produtos;
     }
+
+    public List<String> folhaDePagamento() throws SQLException{
+        DAORelatorios dao = new DAORelatorios();
+        List<String> folha = dao.folhaDePagamento();
+        return folha;
+    }
 }
